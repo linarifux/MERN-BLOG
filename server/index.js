@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
 const router = require('./routes/route')
+const path = require('path')
+const cookieParser = require('cookie-parser')
 
 // components
 const db = require('./databse/db')
@@ -14,16 +16,16 @@ app.listen(port, () => {
 
 app.use(cors())
 app.use(express.json())
+app.use(cookieParser())
 
 
 // db connection
 db()
 
+// static file serve
+app.use('/images', express.static(path.join(__dirname, 'public/uploads')))
 
-/// crate route
+
+/// blog route
 app.use('/', router)
-
-app.get('/', (req,res) => {
-    res.send("Hello Express!")
-})
 

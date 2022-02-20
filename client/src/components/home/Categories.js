@@ -4,21 +4,27 @@ import { Link } from 'react-router-dom';
 
 const Categories = () => {
     const categories = ['Tech','Science','Music','Sports', 'Fashion','Programming'];
+    const token = localStorage.getItem('token')
+
   return (
       <>
-        <Link to={'/create'} style={{textDecoration: 'none', color: 'inherit'}}><Button variant='contained' sx={{margin: '20px', fontSize: '20px', width: '86%'}}>Create Blog</Button></Link>
+        {token?<Link to={'/create'} style={{textDecoration: 'none', color: 'inherit'}}><Button variant='contained' sx={{margin: '20px', fontSize: '20px', width: '86%'}}>Create Blog</Button></Link>:''}
 
         <Table sx={{border: '1px solid #878787'}}>
             <TableHead>
                 <TableRow>
-                    <TableCell>All Categories</TableCell>
+                    <TableCell>
+                        <Link style={{textDecoration: 'none', color: 'inherit'}} to={`/`} >All Categories</Link>
+                    </TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
-                {categories.map(cat => {
+                {categories.map((cat, index) => {
                     return(
-                        <TableRow>
-                            <TableCell>{cat}</TableCell>
+                        <TableRow key={index}>
+                            <TableCell>
+                                <Link style={{textDecoration: 'none', color: 'inherit'}} to={`/?category=${cat}`}>{cat}</Link>
+                            </TableCell>
                         </TableRow>
                     )
                 })}

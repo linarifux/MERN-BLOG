@@ -3,11 +3,9 @@ import { Box } from '@mui/system';
 import { Typography } from '@mui/material';
 
 const Post = ({post}) => {
-    const url = 'https://cdn.pixabay.com/photo/2020/01/26/20/14/computer-4795762__340.jpg'
-    const {title,description,categories,author} = post
+    const {title,description,categories,username,imageUrl} = post
   return (
       <Box sx={{
-        height: '350px',
         margin: '10px',
         borderRadius: '10px',
         border: '1px solid #d3cede',
@@ -26,13 +24,13 @@ const Post = ({post}) => {
 
         }}
         alt="Wrapper"
-        src={url}
+        src={imageUrl}
       />
           <Box sx={{padding: '10px', textAlign: 'center'}}>
             <Typography sx={{color: '#878787', marginBottom: '10px', fontSize: '15px', textDecoration: 'none'}}>{categories}</Typography>
-            <Typography sx={{margin: '5px 0', fontWeight: 600, textDecoration: 'none'}}>{title}</Typography>
-            <Typography sx={{color: '#878787', fontSize: '15px', textDecoration: 'none'}}>{author}</Typography>
-            <Typography sx={{wordBreak: 'break-word', textAlign: 'left', textDecoration: 'none'}}>{description}</Typography>
+            <Typography sx={{margin: '5px 0', fontWeight: 600, textDecoration: 'none'}}>{title.length>40?title.slice(0,40):title}</Typography>
+            <Typography sx={{color: '#878787', fontSize: '15px', textDecoration: 'none'}}>{username}</Typography>
+            <Typography sx={{wordBreak: 'break-word', textAlign: 'left', textDecoration: 'none'}}>{description.length>100?description.slice(0,100):description}</Typography>
           </Box>
       </Box>
   );

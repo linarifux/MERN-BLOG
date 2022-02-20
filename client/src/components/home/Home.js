@@ -9,8 +9,12 @@ const Home = () => {
       <>
         <Banner></Banner>
         <Grid container>
-            <Grid item lg={2} xs={12} sm={2}><Categories></Categories></Grid>
-            <Grid container lg={10} xs={12} sm={10}><Posts /></Grid>
+            <Grid item lg={2} xs={12} sm={4}><Categories></Categories></Grid>
+            <Grid item lg={10} xs={12} sm={8}>
+              <Grid container>
+                <Posts />
+              </Grid>
+            </Grid>
         </Grid>
       </>
   );
